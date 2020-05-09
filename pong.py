@@ -9,6 +9,11 @@ layar.bgcolor("black")
 layar.setup(width=800, height=600)
 layar.tracer(0)
 
+#skor
+skor_a = 0
+skor_b = 0
+
+
 #raket A kiri
 raket_a = turtle.Turtle()
 raket_a.speed(0)
@@ -37,6 +42,16 @@ bola.penup()
 bola.goto(0,0)
 bola.dx = 0.2 
 bola.dy = 0.2
+
+# pen
+skor = turtle.Turtle()
+skor.speed(0)
+skor.color ('white')
+skor.penup()
+skor.hideturtle()
+skor.goto(0,260)
+skor.write("Player A: 0  Player B:0", align="center",font=("Courier", 24, "normal"))
+
 
 
 #function
@@ -86,6 +101,10 @@ while True:                                     #awalmya raket ga muncul, ternya
     if bola.xcor() > 390 :
         bola.goto(0,0)
         bola.dx *= -1
+        skor_a += 1
+        skor.clear()
+        skor.write("Player A: {}  Player B: {}".format(skor_a,skor_b), align="center",font=("Courier", 24, "normal"))
+
 
     if bola.ycor() < -290:
         bola.sety(-290)
@@ -94,6 +113,10 @@ while True:                                     #awalmya raket ga muncul, ternya
     if bola.xcor() < -390 :
         bola.goto(0,0)
         bola.dx *= -1
+        skor_b += 1
+        skor.clear()
+        skor.write("Player A: {}  Player B: {}".format(skor_a,skor_b), align="center",font=("Courier", 24, "normal"))
+
 
     #tumbukan kanan 
     if (bola.xcor() > 340 and bola.xcor() <350 ) and (bola.ycor() < raket_b.ycor() + 40 and bola.ycor() > raket_b.ycor() - 40):
