@@ -133,3 +133,4 @@ while True:                                     #awalmya raket ga muncul, ternya
         bola.setx(-340)
         bola.dx *= -1
         os.system("aplay bounce.wav&")
+#finish.
