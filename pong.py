@@ -2,6 +2,7 @@
 # https://www.youtube.com/watch?v=9LhS5IFh78I
 
 import turtle 
+import os 
 
 layar = turtle.Screen()
 layar.title('Pong')
@@ -97,6 +98,7 @@ while True:                                     #awalmya raket ga muncul, ternya
     if bola.ycor() > 290:
         bola.sety(290)
         bola.dy *= -1            #ini bikin efek tumbukan. reverse direction.
+        os.system("aplay bounce.wav&")
 
     if bola.xcor() > 390 :
         bola.goto(0,0)
@@ -105,10 +107,10 @@ while True:                                     #awalmya raket ga muncul, ternya
         skor.clear()
         skor.write("Player A: {}  Player B: {}".format(skor_a,skor_b), align="center",font=("Courier", 24, "normal"))
 
-
     if bola.ycor() < -290:
         bola.sety(-290)
         bola.dy *= -1            #ini bikin efek tumbukan. reverse direction.
+        os.system("aplay bounce.wav&")
 
     if bola.xcor() < -390 :
         bola.goto(0,0)
@@ -116,13 +118,18 @@ while True:                                     #awalmya raket ga muncul, ternya
         skor_b += 1
         skor.clear()
         skor.write("Player A: {}  Player B: {}".format(skor_a,skor_b), align="center",font=("Courier", 24, "normal"))
+        
 
 
-    #tumbukan kanan 
+    #tumbukan raket kanan 
     if (bola.xcor() > 340 and bola.xcor() <350 ) and (bola.ycor() < raket_b.ycor() + 40 and bola.ycor() > raket_b.ycor() - 40):
         bola.setx(340)
         bola.dx *= -1
+        os.system("aplay bounce.wav&")
 
+
+    # tumbukan raket kiri
     if (bola.xcor() < -340 and bola.xcor() > -350 ) and (bola.ycor() < raket_a.ycor() + 40 and bola.ycor() > raket_a.ycor() - 40):
         bola.setx(-340)
         bola.dx *= -1
+        os.system("aplay bounce.wav&")
