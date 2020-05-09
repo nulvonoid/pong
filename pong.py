@@ -6,7 +6,7 @@ import turtle
 layar = turtle.Screen()
 layar.title('Pong')
 layar.bgcolor("black")
-layar.setup(width=800, height=800)
+layar.setup(width=800, height=600)
 layar.tracer(0)
 
 #raket A kiri
@@ -35,6 +35,9 @@ bola.shape("circle")
 bola.color("white")
 bola.penup()
 bola.goto(0,0)
+bola.dx = 0.5 
+bola.dy = 0.5
+
 
 #function
 def raket_a_atas():
@@ -69,4 +72,25 @@ layar.onkeypress(raket_b_bawah, "Down")
 
 #loop utama
 while True:                                     #awalmya raket ga muncul, ternyata ini harus ditaro di bagian akhir 
-   layar.update()
+    layar.update()
+
+   #bola gerak
+    bola.setx(bola.xcor() + bola.dx)
+    bola.sety(bola.ycor() + bola.dy)
+
+   #tumbukan sama border
+    if bola.ycor() > 290:
+       bola.sety(290)
+       bola.dy *= -1            #ini bikin efek tumbukan. reverse direction.
+
+    if bola.xcor() > 390 :
+       bola.goto(0,0)
+       bola.dx *= -1
+
+    if bola.ycor() < -290:
+       bola.sety(-290)
+       bola.dy *= -1            #ini bikin efek tumbukan. reverse direction.
+
+    if bola.xcor() < -390 :
+       bola.goto(0,0)
+       bola.dx *= -1
