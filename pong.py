@@ -35,8 +35,8 @@ bola.shape("circle")
 bola.color("white")
 bola.penup()
 bola.goto(0,0)
-bola.dx = 0.5 
-bola.dy = 0.5
+bola.dx = 0.2 
+bola.dy = 0.2
 
 
 #function
@@ -80,17 +80,26 @@ while True:                                     #awalmya raket ga muncul, ternya
 
    #tumbukan sama border
     if bola.ycor() > 290:
-       bola.sety(290)
-       bola.dy *= -1            #ini bikin efek tumbukan. reverse direction.
+        bola.sety(290)
+        bola.dy *= -1            #ini bikin efek tumbukan. reverse direction.
 
     if bola.xcor() > 390 :
-       bola.goto(0,0)
-       bola.dx *= -1
+        bola.goto(0,0)
+        bola.dx *= -1
 
     if bola.ycor() < -290:
-       bola.sety(-290)
-       bola.dy *= -1            #ini bikin efek tumbukan. reverse direction.
+        bola.sety(-290)
+        bola.dy *= -1            #ini bikin efek tumbukan. reverse direction.
 
     if bola.xcor() < -390 :
-       bola.goto(0,0)
-       bola.dx *= -1
+        bola.goto(0,0)
+        bola.dx *= -1
+
+    #tumbukan kanan 
+    if (bola.xcor() > 340 and bola.xcor() <350 ) and (bola.ycor() < raket_b.ycor() + 40 and bola.ycor() > raket_b.ycor() - 40):
+        bola.setx(340)
+        bola.dx *= -1
+
+    if (bola.xcor() < -340 and bola.xcor() > -350 ) and (bola.ycor() < raket_a.ycor() + 40 and bola.ycor() > raket_a.ycor() - 40):
+        bola.setx(-340)
+        bola.dx *= -1
